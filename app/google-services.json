@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "788953365526",
+    "project_id": "chat-free-2546e",
+    "storage_bucket": "chat-free-2546e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:788953365526:android:b8081fc480ba906eb04937",
+        "android_client_info": {
+          "package_name": "com.divax.chatfree"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "788953365526-ged68db5apbf42mi71sl47b1uh8jm1ri.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcapBUyyUAJa0ps2rD7vxprvLKwJMreNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "788953365526-ged68db5apbf42mi71sl47b1uh8jm1ri.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
