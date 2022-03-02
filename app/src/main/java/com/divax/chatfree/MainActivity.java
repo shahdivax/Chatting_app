@@ -115,25 +115,23 @@ public class MainActivity extends AppCompatActivity {
                         Intent i = new Intent(MainActivity.this, Login.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(i);
-                    }
-                   else if(Gender[0].equals("Global Chat") && !LocationNew.getText().toString().equals("Global")){
+                    } else if (Gender[0].equals("Global Chat") && !LocationNew.getText().toString().equals("Global")) {
                         Intent i = new Intent(MainActivity.this, MainActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(i);
                         Toast.makeText(getBaseContext(), "Global Chat", Toast.LENGTH_SHORT).show();
-                    }
-                    else{
+                    } else {
                         Toast.makeText(getBaseContext(), "Global Chat", Toast.LENGTH_SHORT).show();
                     }
 
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
 
             }
         });
-
 
 
         //ListView Item Clicker
@@ -172,13 +170,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         //Location Icon Click
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(MainActivity.this);
         LocationSymbol.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    getlocation();
+                getlocation();
             }
         });
 
@@ -188,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         SendM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!Locationold.equals(LocationNew.getText().toString())){
+                if (!Locationold.equals(LocationNew.getText().toString())) {
                     Database.getReference().child(Locationold).child(id).removeValue();
                     Locationold = LocationNew.getText().toString();
                     arrayAdapter.clear();
@@ -199,9 +196,9 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (messages.getText().toString().equals("")) {
-                    Toast.makeText(MainActivity.this, "Can't Send Empty Message", Toast.LENGTH_SHORT).show();}
-                else {
-                    Database.getReference().child(LocationNew.getText().toString()).child(id).setValue(LocationNew.getText().toString()+">  " + messages.getText().toString());
+                    Toast.makeText(MainActivity.this, "Can't Send Empty Message", Toast.LENGTH_SHORT).show();
+                } else {
+                    Database.getReference().child(LocationNew.getText().toString()).child(id).setValue(LocationNew.getText().toString() + ">  " + messages.getText().toString());
                     messages.setText("");
                 }
             }
@@ -211,30 +208,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getlocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-                @Override
-                public void onComplete(@NonNull Task<Location> task) {
-                    Location location = task.getResult();
-                    if (location != null) {
 
-                        try {
-                            Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
-                            List<Address> addresses = geocoder.getFromLocation(
-                                    location.getLatitude(), location.getLongitude(), 1
-                            );
-                            LocationNew.setText(addresses.get(0).getLocality());
-                            Toast.makeText(MainActivity.this, "Location Set to : "+LocationNew.getText().toString(), Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
+            return;
+        }
+        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+            @Override
+            public void onComplete(@NonNull Task<Location> task) {
+                Location location = task.getResult();
+                if (location != null) {
+
+                    try {
+                        Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
+                        List<Address> addresses = geocoder.getFromLocation(
+                                location.getLatitude(), location.getLongitude(), 1
+                        );
+                        LocationNew.setText(addresses.get(0).getLocality());
+                        Toast.makeText(MainActivity.this, "Location Set to : " + LocationNew.getText().toString(), Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
-            });
-            return;
-        }else {
-        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44); }
-    }
+            }
+        });
+         }
+
 
 
     // initializeListView Method
