@@ -57,7 +57,6 @@ import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
-    int i = 0;
     FusedLocationProviderClient fusedLocationProviderClient;
 
     FirebaseDatabase Database;
