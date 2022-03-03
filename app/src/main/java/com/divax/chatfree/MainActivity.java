@@ -6,40 +6,29 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
-import android.location.LocationManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Looper;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.LocationCallback;
 import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.LocationSettingsStatusCodes;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -66,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
     LocationRequest locationRequest;
-    ImageView SendM, LocationSymbol, List_views;
-    Spinner SignOut;
+    ImageView SendM, LocationSymbol;
     String Locationold;
 
 
@@ -81,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
         LocationNew = findViewById(R.id.Locations);
         SendM = findViewById(R.id.SendM);
         LocationSymbol = findViewById(R.id.LocationSymbol);
-        SignOut = findViewById(R.id.SignOut);
         Database = FirebaseDatabase.getInstance();
         Auth = FirebaseAuth.getInstance();
         String id = Auth.getCurrentUser().getUid();
@@ -95,44 +82,44 @@ public class MainActivity extends AppCompatActivity {
 
         //Spinner for SignOut
 
-        final String[] Gender = new String[1];
-        final List<String> list = new ArrayList<String>();
-        list.add("Menu");
-        list.add("Global Chat");
-        list.add("SignOut");
-        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, list);
-        adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        SignOut.setAdapter(adp1);
-        SignOut.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
-                Gender[0] = SignOut.getSelectedItem().toString();
-                if (!list.get(position).equals("")) {
-                    Gender[0] = list.get(position);
-                    if (Gender[0].equals("SignOut")) {
-                        FirebaseAuth.getInstance().signOut();
-                        Intent i = new Intent(MainActivity.this, Login.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(i);
-                    } else if (Gender[0].equals("Global Chat") && !LocationNew.getText().toString().equals("Global")) {
-                        Intent i = new Intent(MainActivity.this, MainActivity.class);
-                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(i);
-                        Toast.makeText(getBaseContext(), "Global Chat", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getBaseContext(), "Global Chat", Toast.LENGTH_SHORT).show();
-                        SignOut.setSelection(0);
-                    }
-
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> arg0) {
-
-            }
-        });
+//        final String[] Gender = new String[1];
+//        final List<String> list = new ArrayList<String>();
+//        list.add("Menu");
+//        list.add("Global Chat");
+//        list.add("SignOut");
+//        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(this,
+//                android.R.layout.simple_list_item_1, list);
+//        adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        SignOut.setAdapter(adp1);
+//        SignOut.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> arg0, View arg1, int position, long id) {
+//                Gender[0] = SignOut.getSelectedItem().toString();
+//                if (!list.get(position).equals("")) {
+//                    Gender[0] = list.get(position);
+//                    if (Gender[0].equals("SignOut")) {
+//                        FirebaseAuth.getInstance().signOut();
+//                        Intent i = new Intent(MainActivity.this, Login.class);
+//                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        startActivity(i);
+//                    } else if (Gender[0].equals("Global Chat") && !LocationNew.getText().toString().equals("Global")) {
+//                        Intent i = new Intent(MainActivity.this, MainActivity.class);
+//                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+//                        startActivity(i);
+//                        Toast.makeText(getBaseContext(), "Global Chat", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(getBaseContext(), "Global Chat", Toast.LENGTH_SHORT).show();
+//                        SignOut.setSelection(0);
+//                    }
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> arg0) {
+//
+//            }
+//        });
 
 
         //ListView Item Clicker
@@ -273,5 +260,37 @@ public class MainActivity extends AppCompatActivity {
         });
         lv.setAdapter(adapter);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.homemenu, menu);
+
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        int id = item.getItemId();
+        switch (id){
+            case R.id.SignOutMenu:
+                FirebaseAuth.getInstance().signOut();
+                Intent i = new Intent(MainActivity.this, Login.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(i);
+                break;
+
+            case R.id.GlobalChatMenu:
+                Intent j = new Intent(MainActivity.this, MainActivity.class);
+                j.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(j);
+                Toast.makeText(getBaseContext(), "Global Chat", Toast.LENGTH_SHORT).show();
+                break;
+            default:
+                Toast.makeText(getBaseContext(), "Already Global Chat", Toast.LENGTH_SHORT).show();
+                break;
+        }
+
+        return true;
+    }
+
 
 }
