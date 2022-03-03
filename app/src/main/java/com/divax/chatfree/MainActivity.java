@@ -122,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getBaseContext(), "Global Chat", Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(getBaseContext(), "Global Chat", Toast.LENGTH_SHORT).show();
+                        SignOut.setSelection(0);
                     }
 
                 }
@@ -185,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
         SendM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!Locationold.equals(LocationNew.getText().toString())) {
+                if (!Locationold.equals(LocationNew.getText().toString())  ) {
                     Database.getReference().child(Locationold).child(id).removeValue();
                     Locationold = LocationNew.getText().toString();
                     arrayAdapter.clear();
