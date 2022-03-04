@@ -9,6 +9,7 @@ import androidx.core.app.ActivityCompat;
 import com.google.android.gms.location.FusedLocationProviderClient;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -16,6 +17,9 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TypefaceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -61,8 +65,8 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        //Initialize Different Views
 
+        //Initialize Different Views
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         messages = findViewById(R.id.message);
@@ -294,3 +298,4 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
+
