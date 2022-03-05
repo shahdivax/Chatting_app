@@ -1,15 +1,14 @@
 package com.divax.chatfree;
 
 public class user {
-    String Gender,Phone,Name;
+    String Phone,Name;
 
 
 
 
-    public user(String Phone, String Gender) {
+    public user(String Phone) {
 
         this.Phone = Phone;
-        this.Gender = Gender;
     }
 
     public user(){}
@@ -28,13 +27,5 @@ public class user {
 
     public void setPhone(String phone) {
         Phone = phone;
-    }
-
-    public String getGender() {
-        return Gender;
-    }
-
-    public void setGender(String gender) {
-        Gender = gender;
     }
 }

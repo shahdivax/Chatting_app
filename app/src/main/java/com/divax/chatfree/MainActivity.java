@@ -23,6 +23,8 @@ import android.text.style.TypefaceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -50,6 +52,7 @@ import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
+    Animation topanim;
     FusedLocationProviderClient fusedLocationProviderClient;
     FirebaseDatabase Database;
     FirebaseAuth Auth;
@@ -82,6 +85,10 @@ public class MainActivity extends AppCompatActivity {
         LocationNew.setText("Global");
         Locationold = "Global";
         initializeListView();
+        topanim = AnimationUtils.loadAnimation(MainActivity.this,R.anim.top_anim);
+        LocationSymbol.setAnimation(topanim);
+        topanim = AnimationUtils.loadAnimation(MainActivity.this,R.anim.top_anim);
+        LocationNew.setAnimation(topanim);
 
 
         //Spinner for SignOut

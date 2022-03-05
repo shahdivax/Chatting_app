@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Chatfree2/app/src/main/res/drawable/button.xml" value="0.26614583333333336" />
         <entry key="..\:/Chatfree2/app/src/main/res/drawable/ic_main_background_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Chatfree2/app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="..\:/Chatfree2/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Chatfree2/app/src/main/res/layout/activity_signup.xml" value="0.25" />
         <entry key="..\:/Chatfree2/app/src/main/res/layout/activity_splash_screen.xml" value="0.25" />
+        <entry key="..\:/Chatfree2/app/src/main/res/layout/listview.xml" value="0.25" />
         <entry key="..\:/Chatfree2/app/src/main/res/menu/homemenu.xml" value="0.25" />
         <entry key="..\:/Chatfree2/app/src/main/res/mipmap-anydpi-v26/ic_main_background.xml" value="0.14375" />
         <entry key="..\:/Chatfree2/app/src/main/res/mipmap-anydpi-v26/ic_main_background_round.xml" value="0.26614583333333336" />
