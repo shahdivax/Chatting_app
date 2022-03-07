@@ -10,4 +10,5 @@ _A Location Base Chatting App_
 ###### User can delete their last sent message only, by clicking on any message.
 ###### As you leave app and open again the last message will be only displayed other will be automatically deleted
 *MADE USING ANDROID STUDIO BY DIVAX SHAH WITH* ❤️
+\n
 `CODE IS AVAILABE IN MASTER BRANCH`
