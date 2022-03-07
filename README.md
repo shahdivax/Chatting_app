@@ -1,5 +1,7 @@
 # Chatting_app
 _A Location Base Chatting App_
+## Download here
+[https://github.com/shahdivax/Chatting_app/blob/main/Chat%20Free.apk?raw=true]
 ### Features
 ###### Only Text Messages
 ###### Not Storage In device requirement
@@ -11,4 +13,5 @@ _A Location Base Chatting App_
 ###### As you leave app and open again the last message will be only displayed other will be automatically deleted
 *MADE USING ANDROID STUDIO BY DIVAX SHAH WITH* ❤️
 
-###### `CODE IS AVAILABE IN MASTER BRANCH`[https://github.com/shahdivax/Chatting_app/tree/master]
+###### `CODE IS AVAILABE IN MASTER BRANCH`
+[https://github.com/shahdivax/Chatting_app/tree/master]
