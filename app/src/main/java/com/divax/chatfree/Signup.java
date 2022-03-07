@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -45,14 +47,17 @@ public class Signup extends AppCompatActivity {
     FirebaseDatabase database;
     ProgressDialog pd;
     TextInputEditText Name,Email,Phone,Password;
-    TextView LOGIN,SignTEXT;
+    TextView LOGIN,SignTEXT,TC;
     Button Signup;
     ImageView imageView;
+    CheckBox terms;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_signup);
+        TC = findViewById(R.id.TC);
         Name = findViewById(R.id.Name);
         Email = findViewById(R.id.Email);
         Phone = findViewById(R.id.Phone);
@@ -61,6 +66,7 @@ public class Signup extends AppCompatActivity {
         Password = findViewById(R.id.Spassword);
         imageView = findViewById(R.id.SignI);
         SignTEXT = findViewById(R.id.SignTEXT);
+        terms = findViewById(R.id.Terms);
         pd = new ProgressDialog(Signup.this);
         pd.setMessage("Signing You Up");
         Auth = FirebaseAuth.getInstance();
@@ -72,6 +78,7 @@ public class Signup extends AppCompatActivity {
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(terms.isChecked()){
                 if(Name.getText().toString().equals("") || Email.getText().toString().equals("") || Phone.getText().toString().equals("") || Password.getText().toString().equals("")){
                     AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
                     view.startAnimation(buttonClick);
@@ -93,7 +100,6 @@ public class Signup extends AppCompatActivity {
                                         Intent intend = new Intent(Signup.this,Login.class);
                                         intend.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                         startActivity(intend);
-                                        pd.dismiss();
                                     }else{
                                         AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.8F);
                                         view.startAnimation(buttonClick);
@@ -101,11 +107,14 @@ public class Signup extends AppCompatActivity {
                                         view.startAnimation(shake);
 
                                         Toast.makeText(Signup.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                        pd.dismiss();
                                     }
+                                    pd.dismiss();
                                 }
                             });
-                }}
+                }}else {
+                    Toast.makeText(Signup.this, "Please Agree Our Terms And Conditions!", Toast.LENGTH_SHORT).show();
+                }
+            }
         });
         LOGIN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +122,19 @@ public class Signup extends AppCompatActivity {
                 Intent intent = new Intent(Signup.this,Login.class);
                 startActivity(intent);
                 finish();
+            }
+        });
+
+
+        //Terms and Conditions
+
+        TC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String url = "https://www.termsfeed.com/live/f950be5b-9303-4e45-8802-2fea967faad1";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
             }
         });
     }

@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -58,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth Auth;
     DatabaseReference databaseReference;
     ListView lv;
-    TextView messages, LocationNew;
+    TextView messages, LocationNew,TC;
     ArrayList<String> arrayList = new ArrayList<>();
     ArrayAdapter<String> arrayAdapter;
     LocationRequest locationRequest;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         Auth = FirebaseAuth.getInstance();
         String id = Auth.getCurrentUser().getUid();
         lv = findViewById(R.id.listview);
+        TC = findViewById(R.id.TC);
         arrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_item, arrayList);
         lv.setAdapter(arrayAdapter);
         LocationNew.setText("Global");
@@ -144,12 +146,14 @@ public class MainActivity extends AppCompatActivity {
                 builder.setTitle("Caution");
                 builder.setMessage("What u want to do ?\nOnce done can not be UNDONE.!");
 
-                builder.setNegativeButton("Report", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        Toast.makeText(MainActivity.this, "User Reported!", Toast.LENGTH_SHORT).show();
-                    }
-                });
+//                builder.setNegativeButton("Report", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        String ide = Database.getReference().child("User").getKey();
+//                        Toast.makeText(MainActivity.this, ide, Toast.LENGTH_SHORT).show();
+////                        Toast.makeText(MainActivity.this, "User Reported!", Toast.LENGTH_SHORT).show();
+//                    }
+//                });
 
                 builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
                     @Override
@@ -179,6 +183,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
         //Send Icon Click
 
         SendM.setOnClickListener(new View.OnClickListener() {
@@ -194,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
                     initializeListView();
                 }
 
-                if (messages.getText().toString().equals("")) {
+                if (messages.getText().toString().trim().length()==0) {
                     Toast.makeText(MainActivity.this, "Can't Send Empty Message", Toast.LENGTH_SHORT).show();
                 } else {
                     Database.getReference().child(LocationNew.getText().toString()).child(id).setValue(LocationNew.getText().toString() + ">  " + messages.getText().toString());
@@ -232,7 +238,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
          }
-
 
 
     // initializeListView Method

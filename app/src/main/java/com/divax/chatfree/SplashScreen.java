@@ -36,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
         high = findViewById(R.id.hignapp);
         mid = findViewById(R.id.mid);
 
-        logo.setAnimation(topanim);
+//        logo.setAnimation(topanim);
         name.setAnimation(botanim);
         high.setAnimation(botanim);
         mid.setAnimation(botanim);

@@ -1,11 +1,14 @@
 package com.divax.chatfree;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.LocusId;
 import android.os.Bundle;
 import android.util.Pair;
 import android.view.View;
@@ -40,6 +43,7 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
         ID = findViewById(R.id.ID);
         password = findViewById(R.id.LPassword);
@@ -63,6 +67,8 @@ public class Login extends AppCompatActivity {
             startActivity(i);
         } else {
         }
+
+
 
         Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +109,45 @@ public class Login extends AppCompatActivity {
 
                 }}
 
+        });
+
+
+        forgetpass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                    if(ID.getText().toString().trim().length()>0){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(Login.this);
+                    builder.setCancelable(false);
+                    builder.setTitle("Forgot Password");
+                    builder.setMessage("Send Reset Password Email"+"\n"+ID.getText().toString());
+
+                    builder.setPositiveButton("Send", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            FirebaseAuth.getInstance().sendPasswordResetEmail(ID.getText().toString())
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(Login.this, "Email Sent", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+                        }
+                    });
+
+                    builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+                builder.show();
+                }
+            else{
+                        Toast.makeText(Login.this, "Enter Email", Toast.LENGTH_SHORT).show();
+                    }}
         });
         SIGNup.setOnClickListener(new View.OnClickListener() {
             @Override
