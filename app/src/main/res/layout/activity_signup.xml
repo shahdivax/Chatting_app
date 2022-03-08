@@ -71,14 +71,16 @@
             android:layout_marginBottom="10dp"
             android:ems="10"
             android:hint="Name"
-            android:inputType="text">
+            android:inputType="text"
+            android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
-                android:textAlignment="center"></com.google.android.material.textfield.TextInputEditText>
+                android:textAlignment="center"
+                android:textColor="@color/white"></com.google.android.material.textfield.TextInputEditText>
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -93,14 +95,16 @@
             android:ems="10"
             android:hint="Email"
             android:inputType="textEmailAddress"
-            android:textAlignment="center">
+            android:textAlignment="center"
+            android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textEmailAddress"
-                android:textAlignment="center"></com.google.android.material.textfield.TextInputEditText>
+                android:textAlignment="center"
+                android:textColor="@color/white"></com.google.android.material.textfield.TextInputEditText>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,15 +119,18 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Enter Your Mobile"
+            app:counterMaxLength="10"
             android:inputType="phone"
-            android:textAlignment="center">
+            android:textAlignment="center"
+            android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="phone"
-                android:textAlignment="center"></com.google.android.material.textfield.TextInputEditText>
+                android:textAlignment="center"
+                android:textColor="@color/white"></com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -138,14 +145,16 @@
             android:hint="Password"
             android:inputType="textPassword"
             android:textAlignment="center"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/Spassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:textAlignment="center"></com.google.android.material.textfield.TextInputEditText>
+                android:textAlignment="center"
+                android:textColor="@color/white"></com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <CheckBox
@@ -155,7 +164,8 @@
             android:layout_marginLeft="15dp"
             android:checked="true"
             android:text="Agree Our T&amp;C"
-            android:textSize="15sp"></CheckBox>
+            android:textSize="15sp"
+            android:textColor="@color/white"></CheckBox>
 
         <Button
             android:id="@+id/Signup"
@@ -184,7 +194,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.909" />
+        app:layout_constraintVertical_bias="0.909"
+        android:textColor="@color/white"/>
 
     <TextView
         android:id="@+id/TC"
@@ -198,7 +209,8 @@
         app:layout_constraintHorizontal_bias="0.925"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.977" />
+        app:layout_constraintVertical_bias="0.977"
+        android:textColor="@color/white"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
