@@ -1,7 +1,7 @@
 # Chatting_app
 _A Location Base Chatting App_
 ## Download here
-[https://github.com/shahdivax/Chatting_app/blob/main/app-debug.apk?raw=true]
+[https://github.com/shahdivax/Chatting_app/blob/main/Chat.apk?raw=true]
 ### Features
 ###### Only Text Messages
 ###### Not Storage In device requirement
