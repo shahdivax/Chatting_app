@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "788953365526",
-    "project_id": "chat-free-2546e",
-    "storage_bucket": "chat-free-2546e.appspot.com"
+    "project_number": "131756927801",
+    "project_id": "chat-b6385",
+    "storage_bucket": "chat-b6385.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:788953365526:android:b8081fc480ba906eb04937",
+        "mobilesdk_app_id": "1:131756927801:android:9d5296844747e66f1716e8",
         "android_client_info": {
           "package_name": "com.divax.chatfree"
         }
       },
       "oauth_client": [
         {
-          "client_id": "788953365526-ged68db5apbf42mi71sl47b1uh8jm1ri.apps.googleusercontent.com",
+          "client_id": "131756927801-52qj2ri1rv7tghmqcal0g7v3tutop60p.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBcapBUyyUAJa0ps2rD7vxprvLKwJMreNs"
+          "current_key": "AIzaSyDNlcmTd9w6XJvril7zwuzxwyeiZMT-I4g"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "788953365526-ged68db5apbf42mi71sl47b1uh8jm1ri.apps.googleusercontent.com",
+              "client_id": "131756927801-52qj2ri1rv7tghmqcal0g7v3tutop60p.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -119,7 +119,6 @@
             android:ems="10"
             android:gravity="center"
             android:hint="Enter Your Mobile"
-            app:counterMaxLength="10"
             android:inputType="phone"
             android:textAlignment="center"
             android:textColorHint="@color/white">
@@ -130,7 +129,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="phone"
                 android:textAlignment="center"
-                android:textColor="@color/white"></com.google.android.material.textfield.TextInputEditText>
+                android:textColor="@color/white"
+                android:maxLength="10"></com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
